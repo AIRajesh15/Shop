@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyShop.DataAccess.InMemory"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyShop.WebUi.Tests", "MyShop.WebUi.Tests\MyShop.WebUi.Tests.csproj", "{621ABDCA-BE51-456B-8608-3C76E5174AEA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyShop.WebUI", "MyShop.WebUI\MyShop.WebUI.csproj", "{46780804-C6DE-457C-BEF6-D15FA3F1757A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{621ABDCA-BE51-456B-8608-3C76E5174AEA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{621ABDCA-BE51-456B-8608-3C76E5174AEA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{621ABDCA-BE51-456B-8608-3C76E5174AEA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{46780804-C6DE-457C-BEF6-D15FA3F1757A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46780804-C6DE-457C-BEF6-D15FA3F1757A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46780804-C6DE-457C-BEF6-D15FA3F1757A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46780804-C6DE-457C-BEF6-D15FA3F1757A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
