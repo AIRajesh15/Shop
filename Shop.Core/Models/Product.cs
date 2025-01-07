@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 
-namespace MyShop.Core.Models
+namespace Shop.Core.Models
 {
     public class Product
     {
@@ -17,7 +13,7 @@ namespace MyShop.Core.Models
         public string Description { get; set; }
         public decimal Price { get; set; }
         public string Category { get; set; }
-        public string image { get; set; }
+        public string Image { get; set; }
 
         public Product()
         {
