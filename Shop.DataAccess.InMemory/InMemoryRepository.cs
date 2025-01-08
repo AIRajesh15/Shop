@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Shop.DataAccess.InMemory
 {
-    public class InMemoryRepository<T> where T:BaseEntity 
+    public class InMemoryRepository<T> : IRepository<T> where T : BaseEntity
     {
         ObjectCache cache = MemoryCache.Default;
         List<T> items;
@@ -66,7 +66,7 @@ namespace Shop.DataAccess.InMemory
             T tToDelete = items.Find(i => i.Id == Id);
             if (tToDelete != null)
             {
-                items.Remove (tToDelete);
+                items.Remove(tToDelete);
             }
             else
             {
@@ -74,6 +74,6 @@ namespace Shop.DataAccess.InMemory
             }
         }
     }
-            
-    }
+
+}
 
