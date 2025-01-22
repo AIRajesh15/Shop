@@ -9,7 +9,7 @@ namespace Shop.DataAccess.InMemory
         void Commit();
         T Find(string Id);
         void Insert(T t);
-        void tToDelete(string Id);
+        void Delete(string Id);
         void Update(T t);
     }
 }

@@ -8,6 +8,7 @@ using System.Web.Mvc;
 
 namespace Shop.WebUI.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class ProductCategoryManagerController : Controller
     {
         IRepository<ProductCategory>  context;
@@ -104,7 +105,7 @@ namespace Shop.WebUI.Controllers
             }
             else
             {
-                context.tToDelete(Id);
+                context.Delete(Id);
                 context.Commit();
                 return RedirectToAction("Index");
             }

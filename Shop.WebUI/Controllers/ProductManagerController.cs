@@ -6,9 +6,11 @@ using System.Web;
 using System.Web.Mvc;
 using Shop.DataAccess.InMemory;
 using Shop.Core.ViewModels;
+using System.IO;
 
 namespace Shop.WebUI.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class ProductManagerController : Controller
     {
         IRepository <Product> context;
@@ -36,7 +38,7 @@ namespace Shop.WebUI.Controllers
             return View (viewModel);
         }
         [HttpPost]
-        public ActionResult Create(Product product)
+        public ActionResult Create(Product product,HttpPostedFileBase file)
         {
             if(!ModelState.IsValid )
             {
@@ -44,6 +46,11 @@ namespace Shop.WebUI.Controllers
             }
             else
             {
+                if(file!=null)
+                {
+                    product.Image = product.Id + Path.GetExtension(file.FileName);
+                    file.SaveAs (Server.MapPath ("//Content//ProductImages//")+product.Image);
+                }
                 context.Insert (product);
                 context .Commit ();
 
@@ -67,10 +74,10 @@ namespace Shop.WebUI.Controllers
             }
         }
         [HttpPost]
-        public ActionResult Edit(Product product,String Id )
+        public ActionResult Edit(Product product,String Id,HttpPostedFileBase file )
         {
             Product productToEdit = context.Find(Id);
-            if (product == null)
+            if (productToEdit == null)
             {
                 return HttpNotFound();
             }
@@ -81,11 +88,16 @@ namespace Shop.WebUI.Controllers
                 {
                     return View(product);
                 }
+                if (file != null)
+                {
+                    productToEdit.Image = product.Id + Path.GetExtension(file.FileName);
+                    file.SaveAs(Server.MapPath("//Content//ProductImages//") + productToEdit.Image);
+                }
                 productToEdit .Category = product.Category;
                 productToEdit .Description = product.Description;
                 productToEdit .Name = product.Name;
                 productToEdit .Price = product.Price;
-                productToEdit.Image = product.Image;
+                //productToEdit.Image = product.Image;
 
                 context.Commit();
                 return RedirectToAction("Index");
@@ -116,7 +128,7 @@ namespace Shop.WebUI.Controllers
             }
             else
             {
-                context.tToDelete(Id);
+                context.Delete(Id);
                 context.Commit ();
                 return RedirectToAction("Index");
             }
